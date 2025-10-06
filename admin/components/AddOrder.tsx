@@ -20,35 +20,19 @@ import {
     SheetHeader,
     SheetTitle,
 } from "@/components/ui/sheet"
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
 
 const formSchema = z.object({
-    fullName: z
-        .string()
-        .min(2, { message: "Full name must be at least 2 characters!" })
-        .max(50),
-    email: z.string().email({ message: "Invalid email address!" }),
-    phone: z.string().min(10).max(15),
-    address: z.string().min(2),
-    city: z.string().min(2),
+    amount: z
+        .number()
+        .min(1, { message: "Amount must be at least 1 !" }),
+    userId: z.string().min(1,{ message:"UserId is required !" }),
+    status: z.enum(["pending","processing","success","failed"]),
 })
 
-const EditUser = () => {
+const AddOrder = () => {
     const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            fullName: "amal",
-            email: "amal@gmail.com",
-            phone: "1233211231",
-            address: "Main 123",
-            city: "Cochin",
-        },
+        resolver: zodResolver(formSchema),    
     })
 
     function onSubmit(values: z.infer<typeof formSchema>) {
@@ -58,21 +42,21 @@ const EditUser = () => {
     return (
         <SheetContent>
             <SheetHeader>
-                <SheetTitle>Edit User</SheetTitle>
+                <SheetTitle>Add Order</SheetTitle>
                 <SheetDescription asChild>
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                             <FormField
                                 control={form.control}
-                                name="fullName"
+                                name="amount"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Username</FormLabel>
+                                        <FormLabel>Amount</FormLabel>
                                         <FormControl>
                                             <Input placeholder="shadcn" {...field} />
                                         </FormControl>
                                         <FormDescription>
-                                            This is your public display name.
+                                            Enter the Amount of the Order.
                                         </FormDescription>
                                         <FormMessage />
                                     </FormItem>
@@ -80,15 +64,15 @@ const EditUser = () => {
                             />
                             <FormField
                                 control={form.control}
-                                name="email"
+                                name="userId"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Email</FormLabel>
+                                        <FormLabel>User ID</FormLabel>
                                         <FormControl>
                                             <Input placeholder="shadcn" {...field} />
                                         </FormControl>
                                         <FormDescription>
-                                            Only Admin can see Email.
+                                             Enter the UserId.
                                         </FormDescription>
                                         <FormMessage />
                                     </FormItem>
@@ -96,52 +80,31 @@ const EditUser = () => {
                             />
                             <FormField
                                 control={form.control}
-                                name="phone"
+                                name="status"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Phone</FormLabel>
+                                        <FormLabel>Status</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="shadcn" {...field} />
+                                           <Select>
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="Select a Status"/>
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectItem value="pending">Pending</SelectItem>
+                                                <SelectItem value="processing">Processing</SelectItem>
+                                                <SelectItem value="success">Success</SelectItem>
+                                                <SelectItem value="failed">Failed</SelectItem>
+                                            </SelectContent>
+                                           </Select>
                                         </FormControl>
                                         <FormDescription>
-                                            Only Admin can see phone.
+                                           Enter the Status of the Order.
                                         </FormDescription>
                                         <FormMessage />
                                     </FormItem>
                                 )}
                             />
-                            <FormField
-                                control={form.control}
-                                name="address"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Address</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="shadcn" {...field} />
-                                        </FormControl>
-                                        <FormDescription>
-                                        Enter user Address.
-                                        </FormDescription>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="city"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>City</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="shadcn" {...field} />
-                                        </FormControl>
-                                        <FormDescription>
-                                            Only Admin can see location.
-                                        </FormDescription>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
+                            
                             {/* <FormField
                                 control={form.control}
                                 name="role"
@@ -175,4 +138,4 @@ const EditUser = () => {
     )
 }
 
-export default EditUser
+export default AddOrder

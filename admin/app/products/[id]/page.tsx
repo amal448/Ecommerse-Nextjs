@@ -115,6 +115,17 @@ const SingleUserPage = () => {
               </HoverCard>
             </div>
           </div>
+          {/* USER CARD CONTAINER */}
+          <div className="bg-primary-foreground p-4 rounded-lg space-y-4">
+            <div className="flex items-center gap-2">
+              <Avatar className='size-12'>
+                <AvatarImage src="https://avatars.githubusercontent.com/u/1486366" />
+                <AvatarFallback>JD</AvatarFallback>
+              </Avatar>
+              <h1 className="text-xl font-semibold">John Doe</h1>
+            </div>
+            <p className="text-sm text-muted-foreground">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt repellat voluptatibus enim laborum aut architecto, placeat delectus quo in soluta. Possimus rerum nemo natus dolorum alias at, repellendus necessitatibus id.</p>
+          </div>
           {/* INFORMATION CONTAINER */}
           <div className="bg-primary-foreground p-4 rounded-lg">
             <div className="flex justify-between items-center">
@@ -133,7 +144,7 @@ const SingleUserPage = () => {
                 <Progress value={66} />
               </div>
               <div className="flex items-center gap-2">
-                <span className="font-bold"> Username:</span>
+                <span className="font-bold"> Full Name:</span>
                 <span>john.doe</span>
               </div>
               <div className="flex items-center gap-2">
@@ -145,40 +156,28 @@ const SingleUserPage = () => {
                 <span>12333444</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="font-bold"> Location:</span>
-                <span>Newyork</span>
+                <span className="font-bold"> Address:</span>
+                <span>123 Main</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="font-bold"> Role:</span>
-                <Badge>Admin</Badge>
+                <span className="font-bold"> City:</span>
+                <span>Newyork</span>
               </div>
+
             </div>
             <p className="text-sm text-muted-foreground mt-4">
               Joined on 2025.01.01
             </p>
           </div>
-          {/* CARD LIST CONTAINER */}
-          <div className="bg-primary-foreground p-4 rounded-lg">
-            <CardList title="Recent Transaction" />
-          </div>
+
         </div>
         {/* RIGHT */}
         <div className="w-full xl:w-2/3 space-y-6">
-          {/* USER CARD CONTAINER */}
-          <div className="bg-primary-foreground p-4 rounded-lg space-y-4">
-            <div className="flex items-center gap-2">
-              <Avatar className='size-12'>
-                <AvatarImage src="https://avatars.githubusercontent.com/u/1486366" />
-                <AvatarFallback>JD</AvatarFallback>
-              </Avatar>
-              <h1 className="text-xl font-semibold">John Doe</h1>
-            </div>
-              <p className="text-sm text-muted-foreground">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt repellat voluptatibus enim laborum aut architecto, placeat delectus quo in soluta. Possimus rerum nemo natus dolorum alias at, repellendus necessitatibus id.</p>
-          </div>
+
           {/* CHART CONTAINER */}
           <div className="bg-primary-foreground p-4 rounded-lg">
             <h1 className="text-xl font-semibold">User Activity</h1>
-            <AppLineChart/>
+            <AppLineChart />
           </div>
 
         </div>

@@ -57,7 +57,7 @@ export function DataTable<TData, TValue>({
                         <div className="flex justify-end">
                             <button className="flex items-center gap-2 bg-red-500 text-white px-2 py-1 text-sm rounded-md cursor-pointer m-4">
                                 <Trash2 />
-                                Delete User(s)
+                                Delete Product(s)
                             </button>
                         </div>
                     )
@@ -106,7 +106,8 @@ export function DataTable<TData, TValue>({
                 </Table>
             </div>
             <DataTablePagination table={table} />
-          
+            {/* <div className="flex items-center justify-end space-x-2 py-4">
+            </div> */}
         </div>
 
     )
